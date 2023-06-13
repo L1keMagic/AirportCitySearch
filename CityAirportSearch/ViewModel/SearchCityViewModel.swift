@@ -1,6 +1,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxRelay
 
 protocol SearchCityViewPresentable {
     typealias Input = (
@@ -19,27 +20,52 @@ class SearchCityViewModel: SearchCityViewPresentable {
     var output: SearchCityViewPresentable.Output
     private let airportService: AirportAPI
     
+    typealias State = (airports: BehaviorRelay<Set<AirportModel>>, ())
+    private let state = (airports: BehaviorRelay<Set<AirportModel>>(value: []), ())
+    
     private let bag = DisposeBag()
     
     init(input: SearchCityViewPresentable.Input, airportService: AirportAPI) {
         self.input = input
-        self.output = SearchCityViewModel.output(input: self.input)
+        self.output = SearchCityViewModel.output(input: self.input,
+                                                 state: self.state,
+                                                 bag: self.bag)
         self.airportService = airportService
         self.process()
     }
 }
 
 private extension SearchCityViewModel {
-    static func output(input: SearchCityViewPresentable.Input) -> SearchCityViewPresentable.Output {
+    static func output(input: SearchCityViewPresentable.Input, state: State, bag: DisposeBag) -> SearchCityViewPresentable.Output {
+        
+        Observable
+            .combineLatest(input.searchText.asObservable(),
+                           state.airports.asObservable()
+            )
+            .map ({ (searchKey, airports) in
+                return airports.filter { (airport) -> Bool in
+                    !searchKey.isEmpty &&
+                    airport
+                        .city
+                        .lowercased()
+                        .replacingOccurrences(of: " ", with: "")
+                        .hasPrefix(searchKey.lowercased())
+                }
+            })
+            .map {
+                print($0)
+            }
+            .subscribe()
+            .disposed(by: bag)
+        
         return ()
     }
     
     func process() -> Void {
         self.airportService
             .fetchAirports()
-            .map({ (airports) in
-                print("Airports: \(airports)")
-            })
+            .map({ Set($0) })
+            .map({ [state] in state.airports.accept($0) })
             .subscribe()
             .disposed(by: bag)
     }
