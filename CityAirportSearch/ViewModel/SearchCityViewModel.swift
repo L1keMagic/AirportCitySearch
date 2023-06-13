@@ -38,11 +38,22 @@ class SearchCityViewModel: SearchCityViewPresentable {
 private extension SearchCityViewModel {
     static func output(input: SearchCityViewPresentable.Input, state: State, bag: DisposeBag) -> SearchCityViewPresentable.Output {
         
+        let searchTextObservable = input.searchText
+            .debounce(.milliseconds(300))
+            .distinctUntilChanged()
+            .skip(1)
+            .asObservable()
+            .share(replay: 1, scope: .whileConnected)
+            
+        
+        let airportObservable = state.airports
+            .skip(1)
+            .asObservable()
+        
         Observable
-            .combineLatest(input.searchText.asObservable(),
-                           state.airports.asObservable()
-            )
+            .combineLatest(searchTextObservable, airportObservable)
             .map ({ (searchKey, airports) in
+                
                 return airports.filter { (airport) -> Bool in
                     !searchKey.isEmpty &&
                     airport
