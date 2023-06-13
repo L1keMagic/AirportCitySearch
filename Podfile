@@ -6,6 +6,7 @@ target 'CityAirportSearch' do
   use_frameworks!
    pod 'RxSwift' 
    pod 'RxCocoa'
+   pod 'RxDataSources'
 
   # Pods for CityAirportSearch
 

@@ -1,19 +1,14 @@
-//
-//  ViewController.swift
-//  CityAirportSearch
-//
-//  Created by Артур Карачев on 13.06.2023.
-//
-
 import UIKit
+import RxSwift
+import RxDataSources
 
-class SearchAirportsViewController: UIViewController {
+class SearchCityViewController: UIViewController {
 
     @IBOutlet weak var roundedView: UIView!
-    
     @IBOutlet weak var searchTextField: UITextField!
-    
     @IBOutlet weak var tableView: UITableView!
+    
+    var viewModel: SearchCityViewPresentable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
