@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search Airports View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="SearchAirportsViewController" id="BYZ-38-t0r" customClass="SearchAirportsViewController" customModule="CityAirportSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PPd-Gl-MEr">
+                                <rect key="frame" x="0.0" y="59" width="393" height="120"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c3x-aB-T3j">
+                                        <rect key="frame" x="15" y="35" width="363" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="AY6-YI-F0R"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93026649949999995" green="0.20273885129999999" blue="0.2607301474" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="c3x-aB-T3j" firstAttribute="top" secondItem="PPd-Gl-MEr" secondAttribute="top" constant="35" id="7Zk-an-rIi"/>
+                                    <constraint firstAttribute="trailing" secondItem="c3x-aB-T3j" secondAttribute="trailing" constant="15" id="8nb-MW-AbU"/>
+                                    <constraint firstItem="c3x-aB-T3j" firstAttribute="leading" secondItem="PPd-Gl-MEr" secondAttribute="leading" constant="15" id="FHh-Gt-i5R"/>
+                                    <constraint firstAttribute="height" constant="120" id="oZF-Vg-92z"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mxX-eN-LiZ">
+                                <rect key="frame" x="0.0" y="179" width="393" height="639"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PPd-Gl-MEr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2at-Ve-fKS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="PPd-Gl-MEr" secondAttribute="top" id="5RF-Ib-rgo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mxX-eN-LiZ" secondAttribute="bottom" id="68p-yI-oJB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mxX-eN-LiZ" secondAttribute="trailing" id="UMi-Ma-HR9"/>
+                            <constraint firstItem="mxX-eN-LiZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WG1-D5-8cc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PPd-Gl-MEr" secondAttribute="trailing" id="eOT-hn-ZE8"/>
+                            <constraint firstItem="mxX-eN-LiZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="hol-jb-I72"/>
+                            <constraint firstItem="mxX-eN-LiZ" firstAttribute="top" secondItem="PPd-Gl-MEr" secondAttribute="bottom" id="w86-FT-Ras"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="roundedView" destination="PPd-Gl-MEr" id="LnU-W5-Q6u"/>
+                        <outlet property="searchTextField" destination="c3x-aB-T3j" id="6r3-Lm-Gxe"/>
+                        <outlet property="tableView" destination="mxX-eN-LiZ" id="zid-Db-gcH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-16.030534351145036" y="-27.464788732394368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
