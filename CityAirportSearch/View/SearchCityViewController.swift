@@ -26,7 +26,8 @@ class SearchCityViewController: UIViewController, Storyboardable {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         viewModel = viewModelBuilder((
-            searchText: searchTextField.rx.text.orEmpty.asDriver(), ()
+            searchText: searchTextField.rx.text.orEmpty.asDriver(),
+            citySelect: tableView.rx.modelSelected(CityViewModel.self).asDriver()
         ))
         setupUI()
         setupBinding()

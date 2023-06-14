@@ -64,6 +64,36 @@
             </objects>
             <point key="canvasLocation" x="-16.030534351145036" y="-27.464788732394368"/>
         </scene>
+        <!--Airports View Controller-->
+        <scene sceneID="Dc6-X1-V14">
+            <objects>
+                <viewController storyboardIdentifier="AirportsViewController" id="kaO-hf-RIf" customClass="AirportsViewController" customModule="CityAirportSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ic9-Kc-rze">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="175" estimatedRowHeight="175" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="VNk-Tx-Kr0">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uV5-BH-e0J"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uV5-BH-e0J" firstAttribute="trailing" secondItem="VNk-Tx-Kr0" secondAttribute="trailing" id="Fld-dH-uOG"/>
+                            <constraint firstItem="VNk-Tx-Kr0" firstAttribute="leading" secondItem="uV5-BH-e0J" secondAttribute="leading" id="a7a-UO-V25"/>
+                            <constraint firstItem="VNk-Tx-Kr0" firstAttribute="bottom" secondItem="uV5-BH-e0J" secondAttribute="bottom" constant="34" id="fAC-Es-5oj"/>
+                            <constraint firstItem="VNk-Tx-Kr0" firstAttribute="top" secondItem="uV5-BH-e0J" secondAttribute="top" id="qcm-5p-EDq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="VNk-Tx-Kr0" id="OQ2-ey-KNM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fKA-h0-WI3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="870.99236641221376" y="-27.464788732394368"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="secondarySystemBackgroundColor">
